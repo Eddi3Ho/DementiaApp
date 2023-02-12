@@ -32,32 +32,34 @@ public class RegisterActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         setContentView(R.layout.register);
-        final EditText usernametxt = (EditText) findViewById(R.id.username_edit);
-        final EditText emailtxt = (EditText) findViewById(R.id.email_edit);
-        final EditText passwordtxt = (EditText) findViewById(R.id.password_edit);
-        Button btnRegister = (Button) findViewById(R.id.buttonRegister);
-
-
+        final EditText fullnametxt = (EditText) findViewById(R.id.fullname_editText);
+        final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
+        final EditText emailtxt = (EditText) findViewById(R.id.email_editText);
+        final EditText passwordtxt = (EditText) findViewById(R.id.password_editText);
+        Button btnRegister = (Button) findViewById(R.id.registerButton);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String username = usernametxt.getText().toString();
+                String fullname = fullnametxt.getText().toString();
                 String email = emailtxt.getText().toString();
+                String username = usernametxt.getText().toString();
                 String password = passwordtxt.getText().toString();
 
                 //check if EditText fields are empty
                 if (username.matches("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter a username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter your username", Toast.LENGTH_SHORT).show();
                 } else if (email.matches("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter an email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
                 } else if (password.matches("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter a password", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                    Toast.makeText(getApplicationContext(), "Please enter your password", Toast.LENGTH_SHORT).show();
+                } else if (fullname.matches("")) {
+                    Toast.makeText(getApplicationContext(), "Please enter your full name", Toast.LENGTH_SHORT).show();
+                } else {
 
                     Map<String, Object> user = new HashMap<>();
+                    user.put("fullname", fullname);
                     user.put("username", username);
                     user.put("email", email);
                     user.put("password", password);

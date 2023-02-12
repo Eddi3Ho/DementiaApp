@@ -1,11 +1,13 @@
 package com.example.dementiaapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,57 +34,29 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.login);
-        final EditText emailtxt = (EditText) findViewById(R.id.email_edit);
-        final EditText passwordtxt = (EditText) findViewById(R.id.password_edit);
-        Button btntest = (Button) findViewById(R.id.button);
-        Button btnread = (Button) findViewById(R.id.button2);
-        Button btnRegister = (Button) findViewById(R.id.btnregister);
+        final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
+        final EditText passwordtxt = (EditText) findViewById(R.id.password_editText);
+        final TextView btnRegister = (TextView) findViewById(R.id.Registertextview);
+        Button btnLogin = (Button) findViewById(R.id.loginButton);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        btntest.setOnClickListener(new View.OnClickListener() {
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Map<String, Object> user = new HashMap<>();
-                user.put("first", "Ada");
-                user.put("last", "Lovelace");
-                user.put("born", 1816);
-
-                db.collection("users")
-                        .add(user)
-                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                                Toast.makeText(getApplicationContext(),"DocumentSnapshot added with ID: " + documentReference.getId(),Toast.LENGTH_SHORT).show();
-//                                Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(), "Fail",Toast.LENGTH_SHORT).show();
-//                                Log.w(TAG, "Error adding document", e);
-                            }
-                        });
-            }
-        });
-
-        btnread.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String email = emailtxt.getText().toString();
+                String username = usernametxt.getText().toString();
                 String password = passwordtxt.getText().toString();
 
                 //check if EditText fields are empty
-                if (email.matches("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter an email", Toast.LENGTH_SHORT).show();
+                if (username.matches("")) {
+                    Toast.makeText(getApplicationContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
                 } else if (password.matches("")) {
-                    Toast.makeText(getApplicationContext(), "Please enter a password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter your password", Toast.LENGTH_SHORT).show();
                 }
                 else {
 
                     db.collection("users")
-                        .whereEqualTo("email", email).whereEqualTo("password", password)
+                        .whereEqualTo("username", username).whereEqualTo("password", password)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -98,7 +72,10 @@ public class LoginActivity extends AppCompatActivity {
                                             user.setUser_id(document.getId());
                                             user.setUsername(document.getString("username"));
                                             user.setEmail(document.getString("email"));
-                                            Toast.makeText(getApplicationContext(), user.getUser_id() + " , " + user.getUsername() + " , " + user.getEmail(), Toast.LENGTH_LONG).show();
+                                            user.setFull_name(document.getString("fullname"));
+
+                                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                            startActivity(intent);
                                         }
                                     }
                                 }

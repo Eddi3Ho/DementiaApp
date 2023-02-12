@@ -7,6 +7,7 @@ public class User {
     private static String user_id;
     private static String username;
     private static String email;
+    private static String full_name;
 
     public static User getInstance(){
         if(user_instance == null){
@@ -31,9 +32,14 @@ public class User {
         User.email = email;
     }
 
+    public static void setFull_name(String full_name) {
+        User.full_name = full_name;
+    }
+
     public static String getUser_id() {
         return user_id;
     }
+    public static String getFull_name() {return full_name;}
 
     public static String getUsername() {
         return username;

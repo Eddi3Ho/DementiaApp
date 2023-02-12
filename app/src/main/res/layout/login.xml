@@ -11,43 +11,22 @@
         android:layout_above="@id/username_editText"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         android:text="Dementia Mobile App"
+        android:textColor="@color/grey"
         android:textAlignment="center"
+        android:textStyle="bold|italic"
         android:textSize="50sp" />
-
-    <TextView
-        android:id="@+id/username_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/username_editText"
-        android:layout_alignBottom="@id/username_editText"
-        android:layout_marginStart="40dp"
-        android:gravity="center"
-        android:text="Username"
-        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/username_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="60dp"
         android:layout_marginEnd="50dp"
-        android:layout_toEndOf="@id/username_textView"
-        android:hint="username"
+        android:hint="Username"
         android:maxLines="1"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/passwordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/password_editText"
-        android:layout_alignBottom="@id/password_editText"
-        android:layout_marginStart="40dp"
-        android:gravity="center"
-        android:text="Password"
         android:textSize="20sp" />
 
     <EditText
@@ -56,16 +35,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/username_editText"
         android:layout_centerInParent="true"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
-        android:layout_toEndOf="@id/passwordTextView"
-        android:hint="password"
+        android:hint="Password"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/password_editText"
         android:layout_centerHorizontal="true"
@@ -81,6 +59,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="Create an account?"
+        android:onClick="registerPage"
         android:textSize="14sp" />
 
 </RelativeLayout>
