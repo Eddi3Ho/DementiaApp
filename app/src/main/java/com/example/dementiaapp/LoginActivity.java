@@ -1,17 +1,22 @@
 package com.example.dementiaapp;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,6 +30,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,10 +40,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.login);
         final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
         final EditText passwordtxt = (EditText) findViewById(R.id.password_editText);
         final TextView btnRegister = (TextView) findViewById(R.id.Registertextview);
+
         Button btnLogin = (Button) findViewById(R.id.loginButton);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -48,8 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                 String password = passwordtxt.getText().toString();
 
                 //check if EditText fields are empty
+
                 if (username.matches("")) {
                     Toast.makeText(getApplicationContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
+
                 } else if (password.matches("")) {
                     Toast.makeText(getApplicationContext(), "Please enter your password", Toast.LENGTH_SHORT).show();
                 }
@@ -64,7 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     //check if user account exist
                                     if(task.getResult().isEmpty()){
-                                        Toast.makeText(getApplicationContext(), "Incorrect credential, please try again", Toast.LENGTH_LONG).show();
+                                        ViewDialog alert = new ViewDialog();
+                                        alert.showDialog(LoginActivity.this, "Incorrect credential, please try again");
                                     }
                                     else{
                                         User user = User.getInstance();
@@ -98,6 +110,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public class ViewDialog {
+
+        public void showDialog(Activity activity, String msg){
+
+            final Dialog dialog = new Dialog(activity);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setCancelable(false);
+            dialog.setContentView(R.layout.dialog_error);
+
+            TextView text = (TextView) dialog.findViewById(R.id.text_dialog);
+            text.setText(msg);
+
+            Button dialogButton = (Button) dialog.findViewById(R.id.btn_dialog);
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.show();
+
+        }
     }
 
 }

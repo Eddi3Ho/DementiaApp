@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -36,7 +37,18 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
         final EditText emailtxt = (EditText) findViewById(R.id.email_editText);
         final EditText passwordtxt = (EditText) findViewById(R.id.password_editText);
+        final TextView backtologin = (TextView) findViewById(R.id.back_to_login);
         Button btnRegister = (Button) findViewById(R.id.registerButton);
+
+        backtologin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
