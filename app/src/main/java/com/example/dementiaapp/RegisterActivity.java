@@ -37,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
         final EditText emailtxt = (EditText) findViewById(R.id.email_editText);
         final EditText passwordtxt = (EditText) findViewById(R.id.password_editText);
+        final EditText confirmpasswordtxt = (EditText) findViewById(R.id.confirm_password_editText);
         final TextView backtologin = (TextView) findViewById(R.id.back_to_login);
         Button btnRegister = (Button) findViewById(R.id.registerButton);
 
@@ -58,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email = emailtxt.getText().toString();
                 String username = usernametxt.getText().toString();
                 String password = passwordtxt.getText().toString();
+                String confirm_password = confirmpasswordtxt.getText().toString();
 
                 //check if EditText fields are empty
                 if (username.matches("")) {
@@ -68,6 +70,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please enter your password", Toast.LENGTH_SHORT).show();
                 } else if (fullname.matches("")) {
                     Toast.makeText(getApplicationContext(), "Please enter your full name", Toast.LENGTH_SHORT).show();
+                } else if (!confirm_password.matches(password)) {
+                    Toast.makeText(getApplicationContext(), "Confirm password does not match password", Toast.LENGTH_SHORT).show();
                 } else {
 
                     Map<String, Object> user = new HashMap<>();
