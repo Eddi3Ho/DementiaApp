@@ -40,6 +40,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //check if user has logged in
+        User user = User.getInstance();
+        if(user.getIsLogin()){
+            Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
+            startActivity(intent);
+        }
 
         setContentView(R.layout.login);
         final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
@@ -79,14 +85,15 @@ public class LoginActivity extends AppCompatActivity {
                                         alert.showDialog(LoginActivity.this, "Incorrect credential, please try again");
                                     }
                                     else{
-                                        User user = User.getInstance();
+
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             user.setUser_id(document.getId());
                                             user.setUsername(document.getString("username"));
                                             user.setEmail(document.getString("email"));
                                             user.setFull_name(document.getString("fullname"));
+                                            user.setIs_login(true);
 
-                                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                            Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
                                             startActivity(intent);
                                         }
                                     }

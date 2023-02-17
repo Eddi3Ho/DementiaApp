@@ -9,6 +9,8 @@ public class User {
     private static String email;
     private static String full_name;
 
+    private static boolean is_login = false;
+
     public static User getInstance(){
         if(user_instance == null){
             user_instance = new User();
@@ -18,6 +20,14 @@ public class User {
 
     public User(){
 
+    }
+
+    public static void unset_user_session(){
+        User.user_id = null;
+        User.full_name = null;
+        User.email = null;
+        User.username = null;
+        User.is_login = false;
     }
 
     public static void setUser_id(String user_id){
@@ -36,6 +46,10 @@ public class User {
         User.full_name = full_name;
     }
 
+    public static void setIs_login(boolean is_login) {
+        User.is_login = is_login;
+    }
+
     public static String getUser_id() {
         return user_id;
     }
@@ -47,5 +61,9 @@ public class User {
 
     public static String getEmail() {
         return email;
+    }
+
+    public static Boolean getIsLogin() {
+        return is_login;
     }
 }
