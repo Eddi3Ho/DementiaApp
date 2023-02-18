@@ -30,6 +30,9 @@
         <activity
             android:name=".AccountActivity">
         </activity>
+        <activity
+            android:name=".ReadHost">
+        </activity>
     </application>
 
 </manifest>
