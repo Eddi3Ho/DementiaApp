@@ -10,4 +10,6 @@
     <string name="password">Password</string>
     <string name="register_button">Register</string>
 
+    <string name="channel_name">Notification</string>
+    <string name="channel_description">Daily Notification</string>
 </resources>
