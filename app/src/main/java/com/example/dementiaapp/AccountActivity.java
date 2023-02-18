@@ -103,7 +103,15 @@ public class AccountActivity extends AppCompatActivity {
         inviteFriendbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                emailDialog(AccountActivity.this);
+
+                Intent myIntent = new Intent(Intent.ACTION_SEND);
+                myIntent.setType("text/plain");
+                String body = "Your friend " + user.getFull_name() + " is inviting you to learn more about dementia. Download the app now (link)";
+                String sub = "Invitation";
+                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+                myIntent.putExtra(Intent.EXTRA_TEXT,body);
+                startActivity(Intent.createChooser(myIntent, "Share Using"));
+
             }
         });
 
@@ -296,42 +304,6 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-            }
-        });
-
-        dialog.show();
-    }
-
-    //Email dialog
-    public void emailDialog(Activity activity){
-
-        final Dialog dialog = new Dialog(activity);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.email_friend_dialog);
-        User user = User.getInstance();
-
-        Button confirmButton = (Button) dialog.findViewById(R.id.confirmEmailButton);
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                Intent myIntent = new Intent(Intent.ACTION_SEND);
-                myIntent.setType("text/plain");
-                String body = "Your friend " + user.getFull_name() + " is inviting you to learn more about dementia. Download the app now (link)";
-                String sub = "Invitation";
-                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-                myIntent.putExtra(Intent.EXTRA_TEXT,body);
-                startActivity(Intent.createChooser(myIntent, "Share Using"));
-//                Intent email = new Intent(Intent.ACTION_SEND);
-//                email.putExtra(Intent.EXTRA_EMAIL, new String[]{"0134396@kdu-online.com"});
-//                email.putExtra(Intent.EXTRA_SUBJECT, "Invitation");
-//                email.putExtra(Intent.EXTRA_TEXT, "John is inviting you to learn more about dementia");
-//
-//                //need this to prompts email client only
-//                email.setType("message/rfc822");
-//
-//                startActivity(Intent.createChooser(email, "Choose an Email client :"));
             }
         });
 
