@@ -48,6 +48,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.login);
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
+        
         final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
         final EditText passwordtxt = (EditText) findViewById(R.id.password_editText);
         final TextView btnRegister = (TextView) findViewById(R.id.Registertextview);

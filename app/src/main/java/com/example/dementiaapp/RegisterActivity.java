@@ -33,6 +33,12 @@ public class RegisterActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         setContentView(R.layout.register);
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
+
         final EditText fullnametxt = (EditText) findViewById(R.id.fullname_editText);
         final EditText usernametxt = (EditText) findViewById(R.id.username_editText);
         final EditText emailtxt = (EditText) findViewById(R.id.email_editText);
