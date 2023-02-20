@@ -33,7 +33,16 @@
             android:name=".AccountActivity">
         </activity>
         <activity
-            android:name=".ReadHost">
+            android:name=".ReadActivity">
+        </activity>
+        <activity
+            android:name=".HostSymptom">
+        </activity>
+        <activity
+            android:name=".HostTips">
+        </activity>
+        <activity
+            android:name=".HostDealing">
         </activity>
         <receiver
             android:name=".MemoBroadcast"

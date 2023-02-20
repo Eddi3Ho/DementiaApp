@@ -61,7 +61,7 @@ public class AccountActivity extends AppCompatActivity {
                 switch(item.getItemId())
                 {
                     case R.id.read:
-                        startActivity(new Intent(getApplicationContext(), ReadHost.class));
+                        startActivity(new Intent(getApplicationContext(), ReadActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.account:

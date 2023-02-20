@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                             user.setFull_name(document.getString("fullname"));
                                             user.setIs_login(true);
 
-                                            Intent intent = new Intent(LoginActivity.this, AccountActivity.class);
+                                            Intent intent = new Intent(LoginActivity.this, ReadActivity.class);
                                             startActivity(intent);
                                         }
                                     }

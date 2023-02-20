@@ -85,6 +85,10 @@ public class RegisterActivity extends AppCompatActivity {
                     user.put("username", username);
                     user.put("email", email);
                     user.put("password", password);
+                    user.put("progress_symptom", "0");
+                    user.put("progress_tips", "0");
+                    user.put("progress_dealing", "0");
+                    user.put("bookmark_page", "0");
 
                     db.collection("users")
                         .add(user)
