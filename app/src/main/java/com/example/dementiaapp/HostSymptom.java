@@ -46,23 +46,41 @@ public class HostSymptom extends AppCompatActivity {
 
                 switch(item.getItemId())
                 {
-                    case R.id.account:
-                        startActivity(new Intent(getApplicationContext(),AccountActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.read:
                         startActivity(new Intent(getApplicationContext(),ReadActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-//                    case R.id.about:
-//                        startActivity(new Intent(getApplicationContext(),About.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+                    case R.id.report:
+                        startActivity(new Intent(getApplicationContext(),ReportActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.quiz:
+                        startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.account:
+                        startActivity(new Intent(getApplicationContext(),AccountActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
         });
 
+
+        Intent intent = getIntent();
+        if(intent.hasExtra("bookmark")){
+            int bookmark = (int) intent.getSerializableExtra("bookmark");
+            if(bookmark == 1){
+                replaceFragment(new FragmentSymptomPage1());
+            } else if (bookmark == 2) {
+                replaceFragment(new FragmentSymptomPage2());
+            } else {
+                replaceFragment(new FragmentSymptomPage3());
+            }
+        }else{
+            replaceFragment(new FragmentSymptomPage1());
+        }
         FloatingActionButton fabAdd = findViewById(R.id.floatingActionButtonAdd);
         FloatingActionButton fab1 = findViewById(R.id.fabpage1);
         FloatingActionButton fab2 = findViewById(R.id.fabpage2);
@@ -107,6 +125,7 @@ public class HostSymptom extends AppCompatActivity {
             }
         });
 
+
         fabback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,6 +158,7 @@ public class HostSymptom extends AppCompatActivity {
     }
 
     private void replaceFragment(Fragment fragment){
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.host_fragment_symptom, fragment);

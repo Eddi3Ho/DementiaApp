@@ -12,4 +12,53 @@
 
     <string name="channel_name">Notification</string>
     <string name="channel_description">Daily Notification</string>
+
+    <string name="sp1">1. Memory loss</string>
+    <string name="sp2">2. Difficulty with communication</string>
+    <string name="sp3">3. Poor judgment</string>
+    <string name="sp4">4. Confusion and disorientation</string>
+    <string name="sp5">5. Changes in mood and behavior</string>
+    <string name="sp6">6. Problems with daily activities</string>
+    <string name="sp7">7. Loss of initiative</string>
+    <string name="sd1">In the early stages of dementia, people may have trouble remembering recent events or conversations. As the disease progresses, they may have difficulty remembering names of family members and friends, where they live or how to get there, or how to complete familiar tasks like cooking a meal. They may also repeat questions or stories, sometimes within a short period.</string>
+    <string name="sd2">Communication difficulties in people with dementia can manifest in many ways. They may have trouble finding the right words or using language effectively, struggle to follow a conversation, or have trouble understanding what others are saying. They may also have difficulty expressing themselves, leading to frustration or anger.</string>
+    <string name="sd3">People with dementia may make poor decisions that put them at risk. They may forget to take medication, give money to strangers, or engage in other behaviors that could lead to harm. They may also have difficulty understanding the consequences of their actions, making it difficult for them to recognize that they need help.</string>
+    <string name="sd4">Confusion and disorientation are common symptoms of dementia. People may become easily confused or disoriented in unfamiliar places or situations. They may forget the time or date, become lost, or have difficulty recognizing people they know.</string>
+    <string name="sd5">Mood and behavior changes can be difficult to manage for both people with dementia and their caregivers. People with dementia may become more agitated, anxious, or depressed, or experience mood swings. They may also become more socially isolated, lose interest in activities they used to enjoy, or exhibit changes in personality.</string>
+    <string name="sd6">As dementia progresses, people may have difficulty with routine tasks such as dressing, grooming, or preparing meals. They may forget how to do these activities or find them too complex to complete independently. This can lead to frustration or embarrassment.</string>
+    <string name="sd7">People with dementia may lose interest in activities they used to enjoy or become less motivated to engage with the world around them. They may require prompting to complete daily tasks or engage in social activities.</string>
+
+    <string name="tp1">1. Speak clearly and calmly</string>
+    <string name="tp2">2. Use nonverbal cues</string>
+    <string name="tp3">3. Be patient</string>
+    <string name="tp4">4. Listen attentively</string>
+    <string name="tp5">5. Avoid correcting or arguing</string>
+    <string name="tp6">6. Use positive body language</string>
+    <string name="tp7">7. Break down tasks into smaller steps</string>
+    <string name="tp8">8. Create a calm environment</string>
+    <string name="td1">Speak clearly and calmly: People with dementia may have difficulty understanding complex language or sentences, so it is important to speak in simple, clear language. Speak in a calm and reassuring tone of voice, as this can help put the person at ease and make them more receptive to what you are saying.</string>
+    <string name="td2">Use nonverbal cues: Nonverbal cues such as facial expressions, gestures, and touch can help reinforce your message and provide additional information to the person. For example, if you are trying to communicate that you care about them, you might offer a gentle touch on the hand or a smile.</string>
+    <string name="td3">People with dementia may take longer to process information and respond to questions, so it is important to be patient and give them plenty of time to respond. Avoid rushing them or interrupting them, as this can increase their frustration and anxiety.</string>
+    <string name="td4">Listening attentively to what the person is saying can help you understand their needs and concerns. Try to focus on the person and avoid distractions such as your phone or other conversations. Pay attention to their tone of voice, body language, and facial expressions, as these can provide important cues about their emotions and needs.</string>
+    <string name="td5">People with dementia may become confused or forgetful, so it is important to avoid correcting or arguing with them. Instead, try to redirect the conversation or change the subject to something more positive and familiar. For example, if they are talking about a deceased loved one, you might redirect the conversation to a happy memory you shared with that person.</string>
+    <string name="td6">Positive body language such as smiling, nodding, and maintaining eye contact can help reinforce your message and make the person feel more comfortable and at ease. This can also help build trust and rapport with the person.</string>
+    <string name="td7">People with dementia may have difficulty completing complex tasks, so it can be helpful to break them down into smaller, more manageable steps. This can help them feel more in control and reduce their anxiety and frustration.</string>
+    <string name="td8">Creating a calm and quiet environment free from distractions can help the person focus on the conversation and make it easier for them to understand what you are saying. Turn off the TV or radio, close the door, and minimize other distractions as much as possible.</string>
+
+    <string name="dp1">1. Identify triggers</string>
+    <string name="dp2">2. Remain calm</string>
+    <string name="dp3">3.  attention</string>
+    <string name="dp4">4. Provide reassurance</string>
+    <string name="dp5">5. Use validation therapy</string>
+    <string name="dp6">6. Maintain a routine</string>
+    <string name="dp7">7. Seek professional help</string>
+    <string name="dd1">Triggers are events or situations that may cause a person with dementia to exhibit troubling behavior. Common triggers include loud noises, unfamiliar environments, and changes in routine. By identifying triggers, you can anticipate and prevent the behavior from occurring. For example, if you notice that the person becomes agitated when there is too much noise, you might try reducing the noise level in the environment by turning off the TV or closing windows.</string>
+    <string name="dd2">When a person with dementia exhibits troubling behavior, it is important to remain calm and composed. This can help prevent the behavior from escalating and make the person feel more comfortable and secure. Try to speak in a calm and reassuring tone of voice, and avoid becoming confrontational or argumentative.</string>
+    <string name="dd3">Redirecting the person is attention to a different activity or topic can help prevent troubling behavior from occurring. For example, if the person becomes agitated when they are unable to leave the house, you might suggest going for a walk or engaging in a different activity that they enjoy. This can help distract the person from the behavior and provide them with a sense of purpose and fulfillment.</string>
+    <string name="dd4">People with dementia may become anxious or agitated when they are unsure of their surroundings or situation. Providing reassurance can help alleviate their anxiety and reduce troubling behaviors. For example, if the person is feeling anxious or scared, you might say "You are safe here with me, I will take care of you." This can help the person feel more secure and reduce the likelihood of troubling behavior.</string>
+    <string name="dd5">Validation therapy involves acknowledging and validating the person\'s feelings and emotions, even if they do not make sense or are based on false beliefs. This can help reduce the person\'s anxiety and provide them with a sense of validation and acceptance. For example, if the person believes that they need to go to work, you might acknowledge their feelings and say "It sounds like you really miss your job. Let\'s talk about some of the things you enjoyed about your work." This can help redirect the person\'s attention and provide them with a sense of purpose and fulfillment.</string>
+    <string name="dd6">People with dementia often feel more comfortable and less anxious when they have a consistent routine. Establishing a regular routine for the person can help reduce troubling behavior and provide them with a sense of structure and predictability. For example, you might establish a regular routine for meals, exercise, and social interaction. This can help the person feel more secure and reduce the likelihood of troubling behavior.</string>
+    <string name="dd7">If the troubling behavior persists or becomes too challenging to manage on your own, consider seeking professional help from a doctor or mental health professional who specializes in dementia care. They can provide you with additional strategies and resources for managing troubling behavior and help ensure the safety and well-being of the person with dementia.</string>
+
+
 </resources>

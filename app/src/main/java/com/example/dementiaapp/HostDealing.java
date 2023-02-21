@@ -46,22 +46,41 @@ public class HostDealing extends AppCompatActivity {
 
                 switch(item.getItemId())
                 {
-                    case R.id.account:
-                        startActivity(new Intent(getApplicationContext(),AccountActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
                     case R.id.read:
                         startActivity(new Intent(getApplicationContext(),ReadActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-//                    case R.id.about:
-//                        startActivity(new Intent(getApplicationContext(),About.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
+                    case R.id.report:
+                        startActivity(new Intent(getApplicationContext(),ReportActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.quiz:
+                        startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.account:
+                        startActivity(new Intent(getApplicationContext(),AccountActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
         });
+
+
+        Intent intent = getIntent();
+        if(intent.hasExtra("bookmark")){
+            int bookmark = (int) intent.getSerializableExtra("bookmark");
+            if(bookmark == 7){
+                replaceFragment(new FragmentDealingPage1());
+            } else if (bookmark == 8) {
+                replaceFragment(new FragmentDealingPage2());
+            } else {
+                replaceFragment(new FragmentDealingPage3());
+            }
+        }else{
+            replaceFragment(new FragmentDealingPage1());
+        }
 
         FloatingActionButton fabAdd = findViewById(R.id.floatingActionButtonAdd);
         FloatingActionButton fab1 = findViewById(R.id.fabpage1);

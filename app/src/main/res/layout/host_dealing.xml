@@ -14,14 +14,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp">
 
-        <fragment
+        <FrameLayout
             android:id="@+id/host_fragment_dealing"
-            android:name="com.example.dementiaapp.FragmentDealingPage1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-            tools:layout="@layout/fragment_dealing_page1" />
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation" />
     </ScrollView>
 
 

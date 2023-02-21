@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,11 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class ReadActivity extends AppCompatActivity {
 
@@ -53,18 +47,20 @@ public class ReadActivity extends AppCompatActivity {
 
                 switch(item.getItemId())
                 {
+                    case R.id.read:
+                        return true;
+                    case R.id.report:
+                        startActivity(new Intent(getApplicationContext(),ReportActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.quiz:
+                        startActivity(new Intent(getApplicationContext(), QuizActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
                     case R.id.account:
                         startActivity(new Intent(getApplicationContext(),AccountActivity.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.read:
-                        startActivity(new Intent(getApplicationContext(),ReadActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-//                    case R.id.about:
-//                        startActivity(new Intent(getApplicationContext(),About.class));
-//                        overridePendingTransition(0,0);
-//                        return true;
                 }
                 return false;
             }
@@ -121,6 +117,36 @@ public class ReadActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ReadActivity.this, HostDealing.class);
                 startActivity(intent);
+            }
+        });
+        bookmarkbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.collection("users")
+                        .document(user.getUser_id())
+                        .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    DocumentSnapshot document = task.getResult();
+                                    int bookmark_number = Integer.parseInt(document.getString("bookmark_page"));
+                                    if(bookmark_number > 6){
+                                        Intent intent = new Intent(ReadActivity.this, HostDealing.class);
+                                        intent.putExtra("bookmark", bookmark_number);
+                                        startActivity(intent);
+                                    } else if (bookmark_number > 3) {
+                                        Intent intent = new Intent(ReadActivity.this, HostTips.class);
+                                        intent.putExtra("bookmark", bookmark_number);
+                                        startActivity(intent);
+                                    } else {
+                                        Intent intent = new Intent(ReadActivity.this, HostSymptom.class);
+                                        intent.putExtra("bookmark", bookmark_number);
+                                        startActivity(intent);
+                                    }
+
+                                }
+                            }
+                        });
             }
         });
 

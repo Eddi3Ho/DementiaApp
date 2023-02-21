@@ -20,7 +20,7 @@ public class FragmentDealingPage3 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_dealing_page1, container, false);
+        view = inflater.inflate(R.layout.fragment_dealing_page3, container, false);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         User user = User.getInstance();

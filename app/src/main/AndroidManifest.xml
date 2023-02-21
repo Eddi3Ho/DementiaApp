@@ -44,6 +44,12 @@
         <activity
             android:name=".HostDealing">
         </activity>
+        <activity
+            android:name=".ReportActivity">
+        </activity>
+        <activity
+            android:name=".QuizActivity">
+        </activity>
         <receiver
             android:name=".MemoBroadcast"
             android:enabled="true"

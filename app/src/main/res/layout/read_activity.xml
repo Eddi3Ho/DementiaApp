@@ -157,7 +157,7 @@
             android:id="@+id/dealing_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tips for communicating with dementia"
+            android:text="Dealing with people with dementia"
             android:paddingHorizontal="15dp"
             android:paddingTop="12dp"
             android:layout_marginBottom="20dp"
