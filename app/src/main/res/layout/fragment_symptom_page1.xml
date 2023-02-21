@@ -60,7 +60,6 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:onClick="expand2"
         android:id="@+id/card_view2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,7 +98,6 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:onClick="expand3"
         android:id="@+id/card_view3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

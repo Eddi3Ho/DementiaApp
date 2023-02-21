@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,6 +38,9 @@ public class FragmentSymptomPage2 extends Fragment {
         layout2 = view.findViewById(R.id.layout2);
         descriptionTextView3 = view.findViewById(R.id.description_textview3);
         layout3 = view.findViewById(R.id.layout3);
+        CardView cardview1 = view.findViewById(R.id.card_view);
+        CardView cardview2 = view.findViewById(R.id.card_view2);
+        CardView cardview3 = view.findViewById(R.id.card_view3);
 
 
         //make sure that progress page for topic can only be increased
@@ -67,22 +71,33 @@ public class FragmentSymptomPage2 extends Fragment {
                     }
                 });
 
-        return view;
-    }
-    public void expand(View view) {
-        int v = (descriptionTextView.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
-        TransitionManager.beginDelayedTransition(layout, new AutoTransition());
-        descriptionTextView.setVisibility(v);
-    }
+        cardview1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int v = (descriptionTextView.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+                TransitionManager.beginDelayedTransition(layout, new AutoTransition());
+                descriptionTextView.setVisibility(v);
+            }
+        });
 
-    public void expand2(View view) {
-        int v = (descriptionTextView2.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
-        TransitionManager.beginDelayedTransition(layout2, new AutoTransition());
-        descriptionTextView2.setVisibility(v);
-    }
-    public void expand3(View view) {
-        int v = (descriptionTextView3.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
-        TransitionManager.beginDelayedTransition(layout3, new AutoTransition());
-        descriptionTextView3.setVisibility(v);
+        cardview2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int v = (descriptionTextView2.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+                TransitionManager.beginDelayedTransition(layout2, new AutoTransition());
+                descriptionTextView2.setVisibility(v);
+            }
+        });
+
+        cardview3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int v = (descriptionTextView3.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+                TransitionManager.beginDelayedTransition(layout3, new AutoTransition());
+                descriptionTextView3.setVisibility(v);
+            }
+        });
+
+        return view;
     }
 }
