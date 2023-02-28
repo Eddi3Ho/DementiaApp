@@ -1,7 +1,10 @@
 package com.example.dementiaapp;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +29,7 @@ import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText confirmpasswordtxt = (EditText) findViewById(R.id.confirm_password_editText);
         final TextView backtologin = (TextView) findViewById(R.id.back_to_login);
         Button btnRegister = (Button) findViewById(R.id.registerButton);
-
+        final String tempID;
         backtologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = passwordtxt.getText().toString();
                 String confirm_password = confirmpasswordtxt.getText().toString();
 
+
                 //check if EditText fields are empty
                 if (username.matches("")) {
                     Toast.makeText(getApplicationContext(), "Please enter your username", Toast.LENGTH_SHORT).show();
@@ -80,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Confirm password does not match password", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    //add user
                     Map<String, Object> user = new HashMap<>();
                     user.put("fullname", fullname);
                     user.put("username", username);
@@ -89,6 +95,12 @@ public class RegisterActivity extends AppCompatActivity {
                     user.put("progress_tips", "0");
                     user.put("progress_dealing", "0");
                     user.put("bookmark_page", "0");
+                    user.put("score_symptom", "0");
+                    user.put("score_tips", "0");
+                    user.put("score_dealing", "0");
+                    user.put("quiz_p_symptom", "0");
+                    user.put("quiz_p_tips", "0");
+                    user.put("quiz_p_dealing", "0");
 
                     db.collection("users")
                         .add(user)
@@ -96,9 +108,92 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
                                 Toast.makeText(getApplicationContext(), "Registration Complete", Toast.LENGTH_LONG).show();
-                                //Go  back to login page if register success
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(intent);
+                                //add empty symptom table
+                                Map<String, Object> symptom = new HashMap<>();
+                                symptom.put("user_id", documentReference.getId());
+                                symptom.put("q1", "-1");
+                                symptom.put("q2", "-1");
+                                symptom.put("q3", "-1");
+                                symptom.put("q4", "-1");
+                                symptom.put("q5", "-1");
+                                symptom.put("q6", "-1");
+                                symptom.put("q7", "-1");
+                                symptom.put("q8", "-1");
+                                symptom.put("q9", "-1");
+                                symptom.put("q10", "-1");
+
+                                db.collection("symptom_draft")
+                                        .add(symptom)
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(getApplicationContext(), "Registration Fail", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                                //add empty tips table
+                                Map<String, Object> tips = new HashMap<>();
+                                tips.put("user_id", documentReference.getId());
+                                tips.put("q1", "-1");
+                                tips.put("q2", "-1");
+                                tips.put("q3", "-1");
+                                tips.put("q4", "-1");
+                                tips.put("q5", "-1");
+                                tips.put("q6", "-1");
+                                tips.put("q7", "-1");
+                                tips.put("q8", "-1");
+                                tips.put("q9", "-1");
+                                tips.put("q10", "-1");
+
+                                db.collection("tips_draft")
+                                        .add(tips)
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(getApplicationContext(), "Registration Fail", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+                                //add empty tips table
+                                Map<String, Object> dealing = new HashMap<>();
+                                dealing.put("user_id", documentReference.getId());
+                                dealing.put("q1", "-1");
+                                dealing.put("q2", "-1");
+                                dealing.put("q3", "-1");
+                                dealing.put("q4", "-1");
+                                dealing.put("q5", "-1");
+                                dealing.put("q6", "-1");
+                                dealing.put("q7", "-1");
+                                dealing.put("q8", "-1");
+                                dealing.put("q9", "-1");
+                                dealing.put("q10", "-1");
+
+                                db.collection("dealing_draft")
+                                        .add(dealing)
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                //Go  back to login page if register success
+                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                                startActivity(intent);
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(getApplicationContext(), "Registration Fail", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -107,6 +202,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), "Registration Fail", Toast.LENGTH_SHORT).show();
                             }
                         });
+
                 }
             }
         });

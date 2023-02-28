@@ -60,5 +60,170 @@
     <string name="dd6">People with dementia often feel more comfortable and less anxious when they have a consistent routine. Establishing a regular routine for the person can help reduce troubling behavior and provide them with a sense of structure and predictability. For example, you might establish a regular routine for meals, exercise, and social interaction. This can help the person feel more secure and reduce the likelihood of troubling behavior.</string>
     <string name="dd7">If the troubling behavior persists or becomes too challenging to manage on your own, consider seeking professional help from a doctor or mental health professional who specializes in dementia care. They can provide you with additional strategies and resources for managing troubling behavior and help ensure the safety and well-being of the person with dementia.</string>
 
+    <!--Quiz - Symptom B,C,B,B,B,A,B,B,B,B-->
+    <string name="q1">1. What is the most common early symptom of dementia?</string>
+    <string name="a1">A. Difficulty speaking</string>
+    <string name="b1">B. Memory loss</string>
+    <string name="c1">C. Trouble with coordination</string>
+    <string name="d1">D. Loss of sense of smell</string>
+
+    <string name="q2">2. Which of the following is a common symptom of dementia?</string>
+    <string name="a2">A. Increased sense of taste</string>
+    <string name="b2">B. Improved problem-solving abilities</string>
+    <string name="c2">C. Difficulty with decision-making</string>
+    <string name="d2">D. Enhanced sense of hearing</string>
+
+    <string name="q3">3. Changes in mood or personality are not common symptoms of dementia.</string>
+    <string name="a3">A. True</string>
+    <string name="b3">B. False</string>
+
+    <string name="q4">4. Which of the following is not a common symptom of dementia?</string>
+    <string name="a4">A. Difficulty finding words</string>
+    <string name="b4">B. Trouble sleeping</string>
+    <string name="c4">C. Misplacing things</string>
+    <string name="d4">D. Poor judgment</string>
+
+    <string name="q5">5. What is the term used to describe the inability to recognize familiar faces or objects?</string>
+    <string name="a5">A. Apraxia</string>
+    <string name="b5">B. Agnosia</string>
+    <string name="c5">C. Aphasia</string>
+    <string name="d5">D. Anomia</string>
+
+    <string name="q6">6. Losing interest in hobbies and activities is a common symptom of dementia.</string>
+    <string name="a6">A. True</string>
+    <string name="b6">B. False</string>
+
+    <string name="q7">7. What is the term used to describe a sudden and intense confusion in a person with dementia?</string>
+    <string name="a7">A. Sundowning</string>
+    <string name="b7">B. Delirium</string>
+    <string name="c7">C. Hypoxia</string>
+    <string name="d7">D. Ataxia</string>
+
+    <string name="q8">8. What is the term used to describe a sudden and intense confusion in a person with dementia?</string>
+    <string name="a8">A. Visual hallucinations</string>
+    <string name="b8">B. Difficulty with language</string>
+    <string name="c8">C. Tremors</string>
+    <string name="d8">D. Apathy</string>
+
+    <string name="q9">9. Difficulty with spatial orientation is not a common symptom of dementia.</string>
+    <string name="a9">A. True</string>
+    <string name="b9">B. False</string>
+
+    <string name="q10">10. What is the term used to describe a sudden and intense confusion in a person with dementia?</string>
+    <string name="a10">A. Agitation</string>
+    <string name="b10">B. Perseveration</string>
+    <string name="c10">C. Apathy</string>
+    <string name="d10">D. Hallucination</string>
+
+    <!--Quiz - Tips C,A,C,D,B,C,C,B,C,D-->
+    <string name="pq1">1. What is one tip for communicating with a person with dementia?</string>
+    <string name="pa1">A. Speak quickly and loudly</string>
+    <string name="pb1">B. Use complex sentences and vocabulary</string>
+    <string name="pc1">C. Use simple and direct language</string>
+    <string name="pd1">D. Talk to them like they are a child</string>
+
+    <string name="pq2">2. It is helpful to use nonverbal cues like facial expressions and gestures when.</string>
+    <string name="pa2">A. True</string>
+    <string name="pb2">B. False</string>
+
+    <string name="pq3">3. What is one way to show that you are actively listening to a person with dementia?</string>
+    <string name="pa3">A. Interrupting them when they are speaking</string>
+    <string name="pb3">B. Finishing their sentences for them</string>
+    <string name="pc3">C. Nodding your head and maintaining eye contact</string>
+    <string name="pd3">D. Checking your phone during the conversation</string>
+
+    <string name="pq4">4. What is one way to avoid confusing a person with dementia during a conversation?</string>
+    <string name="pa4">A. Using abstract language and concepts</string>
+    <string name="pb4">B. Asking them to recall specific dates and events</string>
+    <string name="pc4">C. Changing the topic frequently</string>
+    <string name="pd4">D. Sticking to one topic at a time</string>
+
+    <string name="pq5">5. It is helpful to use humor and sarcasm when communicating with someone with dementia.</string>
+    <string name="pa5">A. True</string>
+    <string name="pb5">B. False</string>
+
+    <string name="pq6">6. What is one way to help a person with dementia understand what you are saying?</string>
+    <string name="pa6">A. Speaking louder and more forcefully</string>
+    <string name="pb6">B. Repeating the same thing over and over</string>
+    <string name="pc6">C. Using visual aids like pictures or gestures</string>
+    <string name="pd6">D. Talking faster</string>
+
+    <string name="pq7">7. What is one way to encourage a person with dementia to communicate with you?</string>
+    <string name="pa7">A. Asking them questions that require complex answers</string>
+    <string name="pb7">B. Talking to them while they are distracted or busy</string>
+    <string name="pc7">C. Being patient and giving them time to respond</string>
+    <string name="pd7">D. Ignoring them if they seem confused or disoriented</string>
+
+    <string name="pq8">8. It is helpful to argue with a person with dementia if they say something that is not true.</string>
+    <string name="pa8">A. True</string>
+    <string name="pb8">B. False</string>
+
+    <string name="pq9">9. What is one way to help a person with dementia feel more comfortable during a conversation?</string>
+    <string name="pa9">A. Speaking to them from a distance</string>
+    <string name="pb9">B. Standing over them or towering over them</string>
+    <string name="pc9">C. Sitting down at their level and maintaining eye contact</string>
+    <string name="pd9">D. Using a lot of technical jargon and industry-specific language</string>
+
+    <string name="pq10">10. What is one way to show empathy and compassion when communicating with a person with dementia?</string>
+    <string name="pa10">A. Ignoring their feelings and concerns</string>
+    <string name="pb10">B. Rushing them through the conversation</string>
+    <string name="pc10">C. Being dismissive of their needs and requests</string>
+    <string name="pd10">D. Validating their feelings and offering support</string>
+
+    <!--Quiz - Dealing  A,A,B,B,A,B.C.A,C,D-->
+    <string name="gq1">1. What is one way to help prevent agitation and confusion in a person with dementia?</string>
+    <string name="ga1">A. Keep their routine the same every day</string>
+    <string name="gb1">B. Change their routine frequently</string>
+    <string name="gc1">C. Avoid providing cues to help them remember things</string>
+    <string name="gd1">D. Speak to them in a loud and aggressive tone</string>
+
+    <string name="gq2">2. It is important to be patient and understanding when interacting with a person with dementia, even if they exhibit challenging behaviors.</string>
+    <string name="ga2">A. True</string>
+    <string name="gb2">B. False</string>
+
+    <string name="gq3">3. What is one way to help a person with dementia feel more comfortable in social situations?</string>
+    <string name="ga3">A. Avoid socializing with them altogether</string>
+    <string name="gb3">B. Provide clear and simple instructions for social events</string>
+    <string name="gc3">C. Pressure them to participate in social events</string>
+    <string name="gd3">D. Criticize them for their social behavior</string>
+
+    <string name="gq4">4. What is one way to prevent falls and other accidents in a person with dementia?</string>
+    <string name="ga4">A. Keep their living space cluttered and disorganized</string>
+    <string name="gb4">B. Remove tripping hazards and install handrails and grab bars</string>
+    <string name="gc4">C. Encourage them to move around quickly and without assistance</string>
+    <string name="gd4">D. Leave sharp objects within their reach</string>
+
+    <string name="gq5">5.  It is helpful to remind a person with dementia of past memories and events.</string>
+    <string name="ga5">A. True</string>
+    <string name="gb5">B. False</string>
+
+    <string name="gq6">6. What is one way to help a person with dementia maintain their independence?</string>
+    <string name="ga6">A. Do everything for them without asking for their input or assistance</string>
+    <string name="gb6">B. Encourage them to participate in activities they enjoy</string>
+    <string name="gc6">C. Limit their access to familiar objects and activities</string>
+    <string name="gd6">D. Keep them isolated from the community</string>
+
+    <string name="gq7">7. What is one way to help a person with dementia feel valued and respected?</string>
+    <string name="ga7">A. Treat them like a child</string>
+    <string name="gb7">B. Talk down to them or use baby talk</string>
+    <string name="gc7">C. Provide opportunities for them to make choices and decisions</string>
+    <string name="gd7">D. Ignore their feelings and concerns</string>
+
+    <string name="gq8">8. It is important to allow a person with dementia to express their emotions, even if those emotions are negative.</string>
+    <string name="ga8">A. True</string>
+    <string name="gb8">B. False</string>
+
+    <string name="gq9">9. What is one way to help a person with dementia stay connected with their loved ones?</string>
+    <string name="ga9">A. Isolate them from their friends and family</string>
+    <string name="gb9">B. Encourage them to avoid socializing with others</string>
+    <string name="gc9">C. Provide opportunities for them to communicate with loved ones regularly</string>
+    <string name="gd9">D. Discourage loved ones from visiting or communicating with them</string>
+
+    <string name="gq10">10. What is one way to help a person with dementia feel more comfortable and at ease?</string>
+    <string name="ga10">A. Speak loudly and quickly to them</string>
+    <string name="gb10">B. Avoid touching or physical contact</string>
+    <string name="gc10">C. Use humor and sarcasm when communicating with them</string>
+    <string name="gd10">D. Speak to them in a calm and reassuring tone</string>
+
 
 </resources>
