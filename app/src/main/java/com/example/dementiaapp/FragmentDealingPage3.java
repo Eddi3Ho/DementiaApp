@@ -1,12 +1,17 @@
 package com.example.dementiaapp;
 
 import android.os.Bundle;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class FragmentDealingPage3 extends Fragment {
 
     View view;
+    TextView descriptionTextView;
+    LinearLayout layout;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,6 +31,10 @@ public class FragmentDealingPage3 extends Fragment {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         User user = User.getInstance();
+
+        descriptionTextView = view.findViewById(R.id.description_textview);
+        layout = view.findViewById(R.id.layout);
+        CardView cardview1 = view.findViewById(R.id.card_view);
 
         //make sure that progress page for topic can only be increased
         //Exp if user has already read page 2 then it won't saved page 1 as the progress
@@ -52,6 +63,15 @@ public class FragmentDealingPage3 extends Fragment {
                         }
                     }
                 });
+
+        cardview1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int v = (descriptionTextView.getVisibility() == View.GONE)? View.VISIBLE: View.GONE;
+                TransitionManager.beginDelayedTransition(layout, new AutoTransition());
+                descriptionTextView.setVisibility(v);
+            }
+        });
 
         return view;
     }
