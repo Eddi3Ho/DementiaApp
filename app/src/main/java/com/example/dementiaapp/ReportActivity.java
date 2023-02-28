@@ -70,10 +70,10 @@ public class ReportActivity extends AppCompatActivity {
         User user = User.getInstance();
         progressBar1 = findViewById(R.id.progress_bar1);
         textViewProgress1 = findViewById(R.id.text_view_progress1);
-        progressBar2 = findViewById(R.id.progress_bar1);
-        textViewProgress2 = findViewById(R.id.text_view_progress1);
-        progressBar3 = findViewById(R.id.progress_bar1);
-        textViewProgress3 = findViewById(R.id.text_view_progress1);
+        progressBar2 = findViewById(R.id.progress_bar2);
+        textViewProgress2 = findViewById(R.id.text_view_progress2);
+        progressBar3 = findViewById(R.id.progress_bar3);
+        textViewProgress3 = findViewById(R.id.text_view_progress3);
 
         db.collection("users")
                 .document(user.getUser_id())
