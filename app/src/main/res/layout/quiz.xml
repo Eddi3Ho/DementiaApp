@@ -226,7 +226,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Score: 0/10" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/read_more3"
