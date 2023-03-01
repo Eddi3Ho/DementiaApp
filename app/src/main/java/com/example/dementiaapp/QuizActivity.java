@@ -11,6 +11,8 @@ import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -101,16 +104,13 @@ public class QuizActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
-                            //Score
-                            symptom_score.setText("Score: " + document.getString("score_symptom") + "/10");
-                            tips_score.setText("Score: " + document.getString("score_tips") + "/10");
-                            dealing_score.setText("Score: " + document.getString("score_dealing") + "/10");
                             //Complete status
                             int red_color = ContextCompat.getColor(QuizActivity.this, R.color.red);
                             int green_color = ContextCompat.getColor(QuizActivity.this, R.color.green);
                             if(Integer.parseInt(document.getString("quiz_p_symptom")) == 10){
                                 symptom_complete.setText("Complete");
                                 symptom_complete.setTextColor(green_color);
+                                symptom_score.setText("Score: " + document.getString("score_symptom") + "/10");
                             } else {
                                 symptom_complete.setText("Incomplete");
                                 symptom_complete.setTextColor(red_color);
@@ -118,6 +118,7 @@ public class QuizActivity extends AppCompatActivity {
                             if(Integer.parseInt(document.getString("quiz_p_tips")) == 10){
                                 tips_complete.setText("Complete");
                                 tips_complete.setTextColor(green_color);
+                                tips_score.setText("Score: " + document.getString("score_tips") + "/10");
                             } else {
                                 tips_complete.setText("Incomplete");
                                 tips_complete.setTextColor(red_color);
@@ -125,6 +126,7 @@ public class QuizActivity extends AppCompatActivity {
                             if(Integer.parseInt(document.getString("quiz_p_dealing")) == 10){
                                 dealing_complete.setText("Complete");
                                 dealing_complete.setTextColor(green_color);
+                                dealing_score.setText("Score: " + document.getString("score_dealing") + "/10");
                             } else {
                                 dealing_complete.setText("Incomplete");
                                 dealing_complete.setTextColor(red_color);

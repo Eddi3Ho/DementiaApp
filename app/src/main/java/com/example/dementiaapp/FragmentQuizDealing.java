@@ -155,31 +155,31 @@ public class FragmentQuizDealing extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        User user = User.getInstance();
+        save_draft();
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
 
+        save_draft();
     }
 
     @Override
     public void onStop() {
         super.onStop();
+        save_draft();
+    }
 
+    public void save_draft(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         User user = User.getInstance();
 
         //check how many question user has done
         int complete = 10;
-        if(radioGroups[0].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[1].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[2].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[3].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[4].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[5].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[6].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[7].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[8].getCheckedRadioButtonId() == -1){ complete--; }
-        if(radioGroups[9].getCheckedRadioButtonId() == -1){ complete--; }
+        for (int i = 0; i < radioGroups.length; i++) {
+            if(radioGroups[i].getCheckedRadioButtonId() == -1){ complete--; }
+        }
 
         //update progress
         db.collection("users")
@@ -266,6 +266,5 @@ public class FragmentQuizDealing extends Fragment {
                         }
                     }
                 });
-
     }
 }

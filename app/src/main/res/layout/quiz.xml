@@ -18,7 +18,7 @@
         />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/symptoms"
+        android:id="@+id/symptoms_card"
         android:layout_width="match_parent"
         android:layout_below="@id/title"
         android:layout_height="wrap_content"
@@ -64,14 +64,6 @@
             android:layout_marginLeft="17dp">
 
             <TextView
-                android:id="@+id/symptom_score"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Score: 0/10" />
-
-            <TextView
                 android:id="@+id/symptom_complete"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
@@ -79,6 +71,14 @@
                 android:textColor="@color/green"
                 android:textStyle="bold"
                 android:text="Complete" />
+
+            <TextView
+                android:id="@+id/symptom_score"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="" />
 
             <TextView
                 android:id="@+id/read_more1"
@@ -92,6 +92,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/tips_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="195dp"
@@ -137,14 +138,6 @@
             android:layout_below="@+id/text_dialog">
 
             <TextView
-                android:id="@+id/tips_score"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Score: 0/10" />
-
-            <TextView
                 android:id="@+id/tips_complete"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
@@ -152,6 +145,14 @@
                 android:textColor="@color/green"
                 android:textStyle="bold"
                 android:text="Complete" />
+
+            <TextView
+                android:id="@+id/tips_score"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="" />
 
             <TextView
                 android:id="@+id/read_more2"
@@ -165,7 +166,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card"
+        android:id="@+id/dealing_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="360dp"
@@ -211,14 +212,6 @@
             android:layout_below="@+id/text_dialog">
 
             <TextView
-                android:id="@+id/dealing_score"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Score: 0/10" />
-
-            <TextView
                 android:id="@+id/dealing_complete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -226,6 +219,14 @@
                 android:text="Incomplete"
                 android:textColor="@color/red"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dealing_score"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Score: 0/10" />
 
             <TextView
                 android:id="@+id/read_more3"
@@ -242,7 +243,7 @@
         android:id="@+id/generate_cert"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/card"
+        android:layout_below="@id/dealing_card"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="150dp"
         android:text="Claim your certificate"
