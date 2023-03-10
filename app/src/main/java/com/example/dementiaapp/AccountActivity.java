@@ -110,7 +110,7 @@ public class AccountActivity extends AppCompatActivity {
 
                 Intent myIntent = new Intent(Intent.ACTION_SEND);
                 myIntent.setType("text/plain");
-                String body = "Your friend " + user.getFull_name() + " is inviting you to learn more about dementia. Download the app now (link)";
+                String body = "Your friend " + user.getFull_name() + " is inviting you to learn more about dementia. Download the app now (https://drive.google.com/file/d/1uyEBDiBbgypSRAtapk6GMMVVwyBW2yf3/view?usp=sharing)";
                 String sub = "Invitation";
                 myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
                 myIntent.putExtra(Intent.EXTRA_TEXT,body);
