@@ -298,7 +298,6 @@ public class AccountActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 user.unset_user_session();
-                Toast.makeText(getApplicationContext(), "test:" + user.getUsername(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
                 Intent intent = new Intent(AccountActivity.this, LoginActivity.class);
                 startActivity(intent);
