@@ -93,16 +93,16 @@ public class ReportActivity extends AppCompatActivity {
                                 textViewProgress1.setText(String.valueOf(value + "%"));
                             }
                             if(progressStr2 != null){
-                                int progress = Integer.parseInt(progressStr2);
-                                int value = (progress * 100) / 3;
-                                progressBar2.setProgress(value);
-                                textViewProgress2.setText(String.valueOf(value + "%"));
+                                int progress2 = Integer.parseInt(progressStr2);
+                                int value2 = (progress2 * 100) / 3;
+                                progressBar2.setProgress(value2);
+                                textViewProgress2.setText(String.valueOf(value2 + "%"));
                             }
                             if(progressStr3 != null){
-                                int progress = Integer.parseInt(progressStr3);
-                                int value = (progress * 100) / 3;
-                                progressBar3.setProgress(value);
-                                textViewProgress3.setText(String.valueOf(value + "%"));
+                                int progress3 = Integer.parseInt(progressStr3);
+                                int value3 = (progress3 * 100) / 3;
+                                progressBar3.setProgress(value3);
+                                textViewProgress3.setText(String.valueOf(value3 + "%"));
                             }
                         }
                     }
