@@ -37,12 +37,12 @@ public class AccountActivity extends AppCompatActivity {
         catch (NullPointerException e){}
 
         EditText fullnametxt = (EditText) findViewById(R.id.fullname_editText);
-        EditText emailtxt = (EditText) findViewById(R.id.email_editText);
-        EditText usernametxt = (EditText) findViewById(R.id.username_editText);
-        Button editProfilebtn = (Button) findViewById(R.id.editProfileButton);
-        Button changePassbtn = (Button) findViewById(R.id.changePasswordButton);
-        Button inviteFriendbtn = (Button) findViewById(R.id.inviteFriendButton);
-        Button logOutdbtn = (Button) findViewById(R.id.logOutButton);
+        //EditText emailtxt = (EditText) findViewById(R.id.email_editText);
+        //EditText usernametxt = (EditText) findViewById(R.id.username_editText);
+        TextView editProfilebtn = (TextView) findViewById(R.id.editProfileButton);
+        TextView changePassbtn = (TextView) findViewById(R.id.changePasswordButton);
+        TextView inviteFriendbtn = (TextView) findViewById(R.id.inviteFriendButton);
+        TextView logOutdbtn = (TextView) findViewById(R.id.logOutButton);
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -86,8 +86,8 @@ public class AccountActivity extends AppCompatActivity {
         String username = user.getUsername();
 
         fullnametxt.setText(fullname);
-        emailtxt.setText(email);
-        usernametxt.setText(username);
+        //emailtxt.setText(email);
+        //usernametxt.setText(username);
 
         editProfilebtn.setOnClickListener(new View.OnClickListener() {
             @Override
