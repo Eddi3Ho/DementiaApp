@@ -114,6 +114,9 @@ public class RegisterActivity extends AppCompatActivity {
                                             user.put("quiz_p_symptom", "0");
                                             user.put("quiz_p_tips", "0");
                                             user.put("quiz_p_dealing", "0");
+                                            user.put("quiz_complete_symptom", false);
+                                            user.put("quiz_complete_tips", false);
+                                            user.put("quiz_complete_dealing", false);
 
                                             db.collection("users")
                                                     .add(user)

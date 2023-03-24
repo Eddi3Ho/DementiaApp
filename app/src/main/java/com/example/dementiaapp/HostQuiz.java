@@ -38,7 +38,7 @@ public class HostQuiz extends AppCompatActivity {
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.read);
+        bottomNavigationView.setSelectedItemId(R.id.quiz);
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

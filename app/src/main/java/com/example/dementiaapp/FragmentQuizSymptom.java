@@ -2,15 +2,19 @@ package com.example.dementiaapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,16 +27,15 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class FragmentQuizSymptom extends Fragment {
 
-//    RadioGroup q1, q2, q3, q4, q5, q6, q7, q8, q9, q10 ;
     RadioGroup[] radioGroups = new RadioGroup[10];
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    User user = User.getInstance();
     View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_quiz_symptom, container, false);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        User user = User.getInstance();
 
         radioGroups[0] = (RadioGroup) view.findViewById(R.id.q1);
         radioGroups[1] = (RadioGroup) view.findViewById(R.id.q2);
@@ -45,6 +48,7 @@ public class FragmentQuizSymptom extends Fragment {
         radioGroups[8] = (RadioGroup) view.findViewById(R.id.q9);
         radioGroups[9] = (RadioGroup) view.findViewById(R.id.q10);
         Button comletebtn = (Button) view.findViewById(R.id.completeButtom);
+
 
         //setting draft answer to questions
         db.collection("symptom_draft")
@@ -112,9 +116,112 @@ public class FragmentQuizSymptom extends Fragment {
                         }
                     }
                 });
+        //check if user exist with session user id
+        db.collection("users")
+                .document(user.getUser_id())
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            //if user exist
+                            if (document.exists()) {
+                                Boolean compelete = document.getBoolean("quiz_complete_symptom");
+                                if(compelete){
+                                    int color = getResources().getColor(R.color.light_green);
+                                    int red_color = getResources().getColor(R.color.light_red);
+
+                                    if(radioGroups[0].getCheckedRadioButtonId() != R.id.b1){
+                                        RadioButton a1 = (RadioButton) view.findViewById(R.id.b1);
+                                        a1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[0].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+
+                                    }
+                                    if(radioGroups[1].getCheckedRadioButtonId() != R.id.c2){
+                                        RadioButton b1 = (RadioButton) view.findViewById(R.id.c2);
+                                        b1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[1].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[2].getCheckedRadioButtonId() != R.id.b3){
+                                        RadioButton c1 = (RadioButton) view.findViewById(R.id.b3);
+                                        c1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[2].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[3].getCheckedRadioButtonId() != R.id.b4){
+                                        RadioButton d1 = (RadioButton) view.findViewById(R.id.b4);
+                                        d1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[3].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[4].getCheckedRadioButtonId() != R.id.b5){
+                                        RadioButton e1 = (RadioButton) view.findViewById(R.id.b5);
+                                        e1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[4].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[5].getCheckedRadioButtonId() != R.id.a6){
+                                        RadioButton f1 = (RadioButton) view.findViewById(R.id.a6);
+                                        f1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[5].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[6].getCheckedRadioButtonId() != R.id.b7){
+                                        RadioButton g1 = (RadioButton) view.findViewById(R.id.b7);
+                                        g1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[6].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[7].getCheckedRadioButtonId() != R.id.b8){
+                                        RadioButton h1 = (RadioButton) view.findViewById(R.id.b8);
+                                        h1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[7].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[8].getCheckedRadioButtonId() != R.id.b9){
+                                        RadioButton i1 = (RadioButton) view.findViewById(R.id.b9);
+                                        i1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[8].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+                                    if(radioGroups[9].getCheckedRadioButtonId() != R.id.b10) {
+                                        RadioButton j1 = (RadioButton) view.findViewById(R.id.b10);
+                                        j1.setBackgroundColor(color);
+
+                                        RadioButton selectedRadioButton = view.findViewById(radioGroups[9].getCheckedRadioButtonId());
+                                        selectedRadioButton.setBackgroundColor(red_color);
+                                    }
+
+                                    comletebtn.setVisibility(View.INVISIBLE);
+
+                                    //disable all question
+                                    for (int i = 0; i < radioGroups.length; i++) {
+                                        radioGroups[i].setEnabled(false);
+                                        for (int j = 0; j < radioGroups[i].getChildCount(); j++) {
+                                            radioGroups[i].getChildAt(j).setEnabled(false);
+                                            RadioButton radioButton = (RadioButton) radioGroups[i].getChildAt(j);
+                                            radioButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
 
 
-        comletebtn.setOnClickListener(new View.OnClickListener() {
+            comletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(radioGroups[0].getCheckedRadioButtonId() == -1 || radioGroups[1].getCheckedRadioButtonId() == -1 || radioGroups[2].getCheckedRadioButtonId() == -1 || radioGroups[3].getCheckedRadioButtonId() == -1
@@ -136,16 +243,21 @@ public class FragmentQuizSymptom extends Fragment {
                     if(radioGroups[8].getCheckedRadioButtonId() == R.id.b9){ score++; }
                     if(radioGroups[9].getCheckedRadioButtonId() == R.id.b10){ score++; }
 
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    User user = User.getInstance();
-
+                    save_draft();
                     db.collection("users")
                             .document(user.getUser_id())
                             .update(
-                                    "score_symptom", String.valueOf(score)
-                            );
-                    Intent intent = new Intent(getActivity(), QuizActivity.class);
-                    startActivity(intent);
+                                    "score_symptom", String.valueOf(score),
+                                    "quiz_complete_symptom", true,
+                                    "quiz_p_symptom", "10"
+                            ).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Intent intent = new Intent(getActivity(), QuizActivity.class);
+                                    startActivity(intent);
+                                }
+                            });
+
                 }
             }
         });
@@ -154,21 +266,29 @@ public class FragmentQuizSymptom extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        save_draft();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        save_draft();
-    }
-
-    @Override
     public void onPause() {
         super.onPause();
-        save_draft();
+        check_complete();
+    }
+
+    public void check_complete(){
+        db.collection("users")
+                .document(user.getUser_id())
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            //if user exist
+                            if (document.exists()) {
+                                Boolean compelete = document.getBoolean("quiz_complete_symptom");
+                                if(!compelete){
+                                    save_draft();
+                                }
+                            }
+                        }
+                    }
+                });
     }
 
     public void save_draft() {
@@ -240,6 +360,7 @@ public class FragmentQuizSymptom extends Fragment {
                     break;
             }
         }
+
         //update draft
         db.collection("symptom_draft")
                 .whereEqualTo("user_id", user.getUser_id())
@@ -267,4 +388,6 @@ public class FragmentQuizSymptom extends Fragment {
                     }
                 });
     }
+
+
 }
