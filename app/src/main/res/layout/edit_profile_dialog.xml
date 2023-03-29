@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp" >
+
+
+
+'<RelativeLayout
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -16,7 +25,7 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="50dp"
@@ -27,74 +36,78 @@
         android:textStyle="bold|italic"
         android:textSize="30sp" />
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/fullNameLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
-        android:text="Full Name" />
+        android:hint="Full Name" >
 
-    <EditText
-        android:id="@+id/d_fullname_editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fullNameLabel"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="50dp"
-        android:hint="Full Name"
-        android:maxLines="1"
-        android:textSize="20sp" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/d_fullname_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fullNameLabel"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="50dp"
+            android:hint="Full Name"
+            android:maxLines="1"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/emailLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/d_fullname_editText"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="15dp"
-        android:text="Email" />
-
-    <EditText
-        android:id="@+id/d_email_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/emailLabel"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="50dp"
-        android:hint="Email"
-        android:maxLines="1"
-        android:textSize="20sp" />
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="200dp"
+        android:hint="Email" >
 
-    <TextView
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/d_email_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailLabel"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="50dp"
+            android:hint="Email"
+            android:maxLines="1"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:id="@+id/usernameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/d_email_editText"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="15dp"
-        android:text="Username" />
-
-    <EditText
-        android:id="@+id/d_username_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/usernameLabel"
-        android:layout_centerInParent="true"
-        android:layout_marginEnd="50dp"
-        android:hint="Username"
-        android:maxLines="1"
-        android:textSize="20sp" />
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="300dp"
+        android:hint="Username" >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/d_username_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usernameLabel"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="50dp"
+            android:hint="Username"
+            android:maxLines="1"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/confirmEditProfileButton"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/d_username_editText"
         android:layout_marginStart="40dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="400dp"
         android:layout_marginBottom="20dp"
         android:text="confirm"
         android:textSize="20sp" />
@@ -102,3 +115,5 @@
 
 
 </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
