@@ -1,13 +1,24 @@
 package com.example.dementiaapp;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+import static android.os.Build.VERSION.SDK_INT;
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +33,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,18 +41,22 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.itextpdf.text.pdf.PdfWriter;
 
 
 import org.w3c.dom.Document;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
 public class QuizActivity extends AppCompatActivity {
 
+    Bitmap bmp, scaledbmp;
+    int pageWidth = 1200;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -95,6 +111,9 @@ public class QuizActivity extends AppCompatActivity {
         Button certbtn = (Button) findViewById(R.id.generate_cert);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         User user = User.getInstance();
+
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.certificate);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 1200, 518, false);
 
         //Update score
         db.collection("users")
@@ -170,11 +189,96 @@ public class QuizActivity extends AppCompatActivity {
         certbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+                PdfDocument document = new PdfDocument();
+                PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
+                PdfDocument.Page page = document.startPage(pageInfo);
+
+                Canvas canvas = page.getCanvas();
+                Paint paint = new Paint();
+                paint.setColor(Color.BLACK);
+                canvas.drawText("Hello, World!", 50, 50, paint);
+
+                document.finishPage(page);
+
+// Write the PDF to a file
+                File file = new File(getExternalFilesDir(null), "example.pdf");
+                try (FileOutputStream fos = new FileOutputStream(file)) {
+                    document.writeTo(fos);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                document.close();
             }
         });
 
     }
+    private void requestPermission() {
+        if (SDK_INT >= Build.VERSION_CODES.R) {
+            try {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.addCategory("android.intent.category.DEFAULT");
+                intent.setData(Uri.parse(String.format("package:%s",getApplicationContext().getPackageName())));
+                startActivityForResult(intent, 2296);
+            } catch (Exception e) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+                startActivityForResult(intent, 2296);
+            }
+        }
+    }
+
+//    private void checkPermission() {
+//        if (ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE)
+//                != PackageManager.PERMISSION_GRANTED) {
+//            // Permission is not granted, request it
+//            ActivityCompat.requestPermissions(this,
+//                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//                    REQUEST_CODE_PERMISSION);
+//        }
+//    }
+
+//    private boolean checkPermission() {
+//        if (SDK_INT >= Build.VERSION_CODES.R) {
+//            return Environment.isExternalStorageManager();
+//        } else {
+//            int result = ContextCompat.checkSelfPermission(QuizActivity.this, READ_EXTERNAL_STORAGE);
+//            int result1 = ContextCompat.checkSelfPermission(QuizActivity.this, WRITE_EXTERNAL_STORAGE);
+//            return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
+//        }
+//    }
+
+    private void createPDF(){
+
+        PdfDocument myPdfDocument = new PdfDocument();
+        Paint myPaint = new Paint();
+        Paint namePaint = new Paint();
+
+        PdfDocument.PageInfo myPageInfo = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
+        PdfDocument.Page myPage = myPdfDocument.startPage(myPageInfo);
+        Canvas canvas = myPage.getCanvas();
+
+        canvas.drawBitmap(scaledbmp, 0, 0, myPaint);
+
+        namePaint.setTextAlign(Paint.Align.CENTER);
+        namePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+        namePaint.setTextSize(70);
+        canvas.drawText("John Doe,=", pageWidth/2, 270, namePaint);
 
 
+        myPdfDocument.finishPage(myPage);
+
+        File file = new File(Environment.getExternalStorageDirectory(),"/Certificate.pdf");
+
+        try {
+            myPdfDocument.writeTo(new FileOutputStream(file));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        myPdfDocument.close();
+    }
 
 }
