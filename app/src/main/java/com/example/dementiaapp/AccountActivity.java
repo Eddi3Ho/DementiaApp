@@ -39,9 +39,7 @@ public class AccountActivity extends AppCompatActivity {
         }
         catch (NullPointerException e){}
 
-        EditText fullnametxt = (EditText) findViewById(R.id.fullname_editText);
-        //EditText emailtxt = (EditText) findViewById(R.id.email_editText);
-        //EditText usernametxt = (EditText) findViewById(R.id.username_editText);
+        TextView fullnameView = (TextView) findViewById(R.id.fullname);
         TextView editProfilebtn = (TextView) findViewById(R.id.editProfileButton);
         TextView changePassbtn = (TextView) findViewById(R.id.changePasswordButton);
         TextView inviteFriendbtn = (TextView) findViewById(R.id.inviteFriendButton);
@@ -88,9 +86,7 @@ public class AccountActivity extends AppCompatActivity {
         String email = user.getEmail();
         String username = user.getUsername();
 
-        fullnametxt.setText(fullname);
-        //emailtxt.setText(email);
-        //usernametxt.setText(username);
+        fullnameView.setText(fullname);
 
         editProfilebtn.setOnClickListener(new View.OnClickListener() {
             @Override

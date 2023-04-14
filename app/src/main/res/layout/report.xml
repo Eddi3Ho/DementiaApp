@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/light_grey">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,13 +18,18 @@
 
             <TextView
                 android:id="@+id/title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Report (Reading Progress)"
+                android:text="Reading Progress Report"
                 android:paddingHorizontal="25dp"
-                android:paddingTop="12dp"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/bg_curved_gradient"
+                android:textStyle="bold"
+                 />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view1"
@@ -36,7 +41,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:contentPadding="20dp">
@@ -45,14 +50,13 @@
                     android:id="@+id/progress_bar1"
                     style="@style/CircularDeterminateProgressBar"
                     android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
                     android:layout_below="@+id/title"
                     android:layout_centerHorizontal="true"
                     android:paddingHorizontal="25dp"
-                    android:paddingTop="12dp"
+                    android:paddingTop="20dp"
+                    android:layout_marginTop="15dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
-
                     android:progress="0" />
 
                 <TextView
@@ -61,20 +65,29 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="25dp"
                     android:paddingTop="12dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="15dp"
                     android:layout_gravity="center"
                     android:textSize="20sp"
                     android:text="0%" />
 
-                <TextView
-                    android:id="@+id/textview1"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/firstrow"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/progress_bar1"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:text="Dementia Symptoms"
-                    android:textSize="20sp" />
+                    android:gravity ="center"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/progress_bar2"
+                        android:text="Dementia Symptoms"
+                        android:textColor="@color/lighter_black"
+                        android:textSize="20sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -88,7 +101,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
                 app:contentPadding="20dp">
@@ -97,13 +110,12 @@
                     android:id="@+id/progress_bar2"
                     style="@style/CircularDeterminateProgressBar"
                     android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_below="@+id/textview1"
+                    android:layout_height="170dp"
                     android:layout_centerHorizontal="true"
-                    android:paddingHorizontal="20dp"
-                    android:paddingTop="12dp"
+                    android:paddingHorizontal="25dp"
+                    android:paddingTop="20dp"
+                    android:layout_marginTop="25dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
                     android:progress="0" />
 
                 <TextView
@@ -112,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="25dp"
                     android:paddingTop="12dp"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="30dp"
                     android:layout_gravity="center"
                     android:textSize="20sp"
                     android:text="0%" />
@@ -123,44 +135,48 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/progress_bar2"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
                     android:text="Tips for Communicating with A Person with Dementia"
-                    android:textSize="20sp" />
+                    android:textColor="@color/lighter_black"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view3"
+                android:layout_below="@+id/card_view2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/card_view2"
-                android:layout_margin="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="10dp"
-                app:contentPadding="20dp" >
+                app:contentPadding="20dp">
 
                 <ProgressBar
                     android:id="@+id/progress_bar3"
                     style="@style/CircularDeterminateProgressBar"
                     android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_below="@+id/textview2"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="20dp"
-                    android:paddingTop="12dp"
+                    android:layout_height="170dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="40dp"
+                    android:paddingHorizontal="25dp"
+                    android:paddingTop="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center"
                     android:progress="0" />
 
                 <TextView
                     android:id="@+id/text_view_progress3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
                     android:paddingHorizontal="25dp"
                     android:paddingTop="12dp"
+                    android:layout_marginTop="30dp"
                     android:layout_gravity="center"
                     android:textSize="20sp"
                     android:text="0%" />
@@ -171,10 +187,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/progress_bar3"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:textSize="20sp"
                     android:gravity="center"
-                    android:text="Dealing with the Troubling Behavior of A Person with Dementia." />
+                    android:text="Dealing with the Troubling Behavior of A Person with Dementia."
+                    android:textColor="@color/lighter_black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
 
             </androidx.cardview.widget.CardView>
 

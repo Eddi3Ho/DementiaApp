@@ -6,61 +6,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="10dp"
-        app:contentPadding="20dp" >
+        android:layout_height="185dp"
+        android:background="@drawable/bg_curved_gradient">
 
         <ImageView
             android:id="@+id/accountIcon"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="20dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/account_icon" />
-
-        <EditText
-            android:id="@+id/fullname_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="10dp"
-            android:hint="Full Name"
-            android:maxLines="1"
-            android:editable="false"
-            android:textSize="20sp" />
+            android:layout_marginTop="20dp"
+            android:src="@drawable/user_icon_white" />
 
         <TextView
-            android:id="@+id/editProfileButton"
+            android:id="@+id/fullname"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Edit Profile"
-            android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
-            android:layout_marginRight="10dp"
-            android:textSize="20sp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="80dp" />
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:gravity="center"
+            android:layout_marginTop="130dp"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            />
 
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/card_view"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="20dp"
@@ -72,7 +55,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/username_editText"
-            android:layout_marginTop="15dp"
             android:background="@color/white"
             android:orientation="vertical"
             android:paddingLeft="10dp"
@@ -81,10 +63,20 @@
             android:paddingBottom="1.0dip">
 
             <TextView
+                android:id="@+id/editProfileButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:text="Edit Profile"
+                android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
+                android:textSize="20sp" />
+
+            <TextView
                 android:id="@+id/changePasswordButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
+                android:layout_marginTop="20sp"
                 android:text="Change password"
                 android:drawableRight="@drawable/baseline_keyboard_arrow_right_24"
                 android:textSize="20sp" />
