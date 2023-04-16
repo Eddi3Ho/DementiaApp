@@ -29,93 +29,103 @@
         android:paddingHorizontal="50dp"
         android:paddingBottom="20dp">
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/fullnameLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full Name" />
-
-        <EditText
-            android:id="@+id/fullname_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/fullnameLabel"
-            android:layout_centerInParent="true"
-            android:hint="Full Name"
-            android:maxLines="1"
-            android:textSize="20sp" />
+            android:text="Full Name" >
 
-        <TextView
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/fullname_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fullnameLabel"
+                android:layout_centerInParent="true"
+                android:hint="Full Name"
+                android:maxLines="1"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/emailLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/fullname_editText"
             android:layout_marginTop="15dp"
-            android:text="Email" />
+            android:text="Email" >
 
-        <EditText
-            android:id="@+id/email_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/emailLabel"
-            android:layout_centerInParent="true"
-            android:hint="Email"
-            android:maxLines="1"
-            android:textSize="20sp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailLabel"
+                android:layout_centerInParent="true"
+                android:hint="Email"
+                android:maxLines="1"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/usernameLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/email_editText"
             android:layout_marginTop="15dp"
-            android:text="Username" />
+            android:text="Username" >
 
-        <EditText
-            android:id="@+id/username_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/usernameLabel"
-            android:layout_centerInParent="true"
-            android:hint="Username"
-            android:maxLines="1"
-            android:textSize="20sp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/usernameLabel"
+                android:layout_centerInParent="true"
+                android:hint="Username"
+                android:maxLines="1"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/passwordLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/username_editText"
             android:layout_marginTop="15dp"
-            android:text="Password" />
+            android:text="Password" >
 
-        <EditText
-            android:id="@+id/password_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/username_editText"
-            android:layout_centerInParent="true"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textSize="20sp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/username_editText"
+                android:layout_centerInParent="true"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/cPasswordLabel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/password_editText"
             android:layout_marginTop="15dp"
-            android:text="Confirm Password" />
+            android:text="Confirm Password" >
 
-        <EditText
-            android:id="@+id/confirm_password_editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cPasswordLabel"
-            android:layout_centerInParent="true"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
-            android:textSize="20sp" />
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirm_password_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cPasswordLabel"
+                android:layout_centerInParent="true"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/registerButton"
