@@ -220,9 +220,7 @@ public class QuizActivity extends AppCompatActivity {
                                 boolean quizTipsComplete = document.getBoolean("quiz_complete_tips");
 
                                 if (quizDealingComplete && quizSymptomComplete && quizTipsComplete) {
-                                    certbtn.setEnabled(true);
-                                } else {
-                                    certbtn.setEnabled(false);
+                                    certbtn.setVisibility(View.VISIBLE);
                                 }
                             }
 
