@@ -42,6 +42,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.TextField;
@@ -195,6 +196,32 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+
+        db.collection("users")
+                .document(user.getUser_id())
+                .get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                boolean quizDealingComplete = document.getBoolean("quiz_complete_dealing");
+                                boolean quizSymptomComplete = document.getBoolean("quiz_complete_symptom");
+                                boolean quizTipsComplete = document.getBoolean("quiz_complete_tips");
+
+                                if (quizDealingComplete && quizSymptomComplete && quizTipsComplete) {
+                                    certbtn.setEnabled(true);
+                                } else {
+                                    certbtn.setEnabled(false);
+                                }
+                            }
+
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error occurred, please try again", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
         certbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -230,9 +257,9 @@ public class QuizActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
         String formattedDate = dateFormat.format(calendar.getTime());
-        paint.setTextSize(150);
+        paint.setTextSize(100);
         paint.setColor(Color.WHITE);
-        int i = 700;
+        int i = 850;
         int j = 3000;
         canvas.drawText(formattedDate, i, j, paint);
 
@@ -244,6 +271,7 @@ public class QuizActivity extends AppCompatActivity {
         pdfDocument.finishPage(page);
         try {
             pdfDocument.writeTo(new FileOutputStream(file));
+            Toast.makeText(getApplicationContext(), "Certificate is created and downloaded.", Toast.LENGTH_LONG).show();
         }
         catch (Exception e){
             e.printStackTrace();
