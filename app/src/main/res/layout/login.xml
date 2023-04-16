@@ -68,27 +68,18 @@
                 android:textSize="17sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:id="@+id/firstrow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/dealing_card"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/button_gradient_blue"
-            android:padding="4.5dp"
-            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Login"
-                android:background="@drawable/button_round_shape"
-
+                android:textColor="@color/white"
+                android:background="@drawable/button_gradient_blue"
+                android:layout_marginTop="40dp"
                 android:textSize="17sp">
             </androidx.appcompat.widget.AppCompatButton>
-        </LinearLayout>
+
 
         <TextView
             android:id="@+id/Registertextview"

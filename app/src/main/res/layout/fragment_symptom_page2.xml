@@ -7,16 +7,26 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dementia Symptom"
-        android:paddingHorizontal="25dp"
-        android:paddingTop="12dp"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        />
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/blue_gradient_background">
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dementia Symptom (2/3)"
+            android:paddingHorizontal="25dp"
+            android:gravity="center"
+            android:paddingVertical="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"
+
+            android:textStyle="bold"
+            />
+    </RelativeLayout>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -44,7 +54,7 @@
                 android:text="@string/sp4"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/purple_500"/>
+                android:textColor="@color/lighter_black"/>
 
             <TextView
                 android:id="@+id/description_textview"
@@ -52,6 +62,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sd4"
                 android:visibility="gone"
+                android:textAlignment="textStart"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -82,7 +96,7 @@
                 android:text="@string/sp5"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/purple_500"/>
+                android:textColor="@color/lighter_black"/>
 
             <TextView
                 android:id="@+id/description_textview2"
@@ -90,6 +104,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sd5"
                 android:visibility="gone"
+                android:textAlignment="textStart"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -120,7 +138,7 @@
                 android:text="@string/sp6"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/purple_500"/>
+                android:textColor="@color/lighter_black"/>
 
             <TextView
                 android:id="@+id/description_textview3"
@@ -128,6 +146,10 @@
                 android:layout_height="wrap_content"
                 android:text="@string/sd6"
                 android:visibility="gone"
+                android:textAlignment="textStart"
+                android:justificationMode="inter_word"
+                android:layout_marginTop="5dp"
+                android:padding="5dp"
                 android:textSize="18sp" />
 
         </LinearLayout>

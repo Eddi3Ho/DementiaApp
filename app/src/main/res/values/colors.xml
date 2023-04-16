@@ -8,10 +8,19 @@
     <color name="black">#FF000000</color>
     <color name="lighter_black">#373737</color>
     <color name="grey">#494949</color>
-    <color name="light_grey">#F4F4F4</color>
+    <color name="light_grey">#E1E1E1</color>
     <color name="white">#FFFFFFFF</color>
+    07BDDF
     <color name="blue">#0096ff</color>
-    <color name="blue2">#3962FF</color>
+    <color name="blue2">#216EF3</color>
+    <color name="sky_blue">#10A1E6</color>
+
+    <color name="gradient1">#09B6E1</color>
+    <color name="gradient2">#149BEE</color>
+    <color name="gradient3">#1590EA</color>
+    <color name="gradient4">#1682ED</color>
+    <color name="gradient5">#1F74F1</color>
+
     <color name="red">#CD372C</color>
     <color name="light_red">#DABEBC</color>
     <color name="green">#4CAF50</color>
