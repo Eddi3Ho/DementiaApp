@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
@@ -41,10 +42,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.TextField;
 
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -52,20 +56,28 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class QuizActivity extends AppCompatActivity {
+    User user = User.getInstance();
+    String fullname = user.getFull_name();
 
-    Bitmap bmp, scaledbmp;
-    int pageWidth = 1200;
+    private String stringFilePath = Environment.getExternalStorageDirectory().getPath() + "/Download/Certificate.pdf";
+    private File file = new File(stringFilePath);
+    private static final int PERMISSION_REQUEST_CODE = 200;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.quiz);
-        try
-        {
-            this.getSupportActionBar().hide();
-        }
-        catch (NullPointerException e){}
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
         //Bottom Navigation Code
         // Initialize and assign variable
@@ -111,9 +123,6 @@ public class QuizActivity extends AppCompatActivity {
         Button certbtn = (Button) findViewById(R.id.generate_cert);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         User user = User.getInstance();
-
-        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.certificate);
-        scaledbmp = Bitmap.createScaledBitmap(bmp, 1200, 518, false);
 
         //Update score
         db.collection("users")
@@ -189,96 +198,57 @@ public class QuizActivity extends AppCompatActivity {
         certbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-
-                PdfDocument document = new PdfDocument();
-                PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 600, 1).create();
-                PdfDocument.Page page = document.startPage(pageInfo);
-
-                Canvas canvas = page.getCanvas();
-                Paint paint = new Paint();
-                paint.setColor(Color.BLACK);
-                canvas.drawText("Hello, World!", 50, 50, paint);
-
-                document.finishPage(page);
-
-// Write the PDF to a file
-                File file = new File(getExternalFilesDir(null), "example.pdf");
-                try (FileOutputStream fos = new FileOutputStream(file)) {
-                    document.writeTo(fos);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                document.close();
+                generatePDF();
             }
         });
 
     }
-    private void requestPermission() {
-        if (SDK_INT >= Build.VERSION_CODES.R) {
-            try {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-                intent.addCategory("android.intent.category.DEFAULT");
-                intent.setData(Uri.parse(String.format("package:%s",getApplicationContext().getPackageName())));
-                startActivityForResult(intent, 2296);
-            } catch (Exception e) {
-                Intent intent = new Intent();
-                intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-                startActivityForResult(intent, 2296);
-            }
-        }
-    }
 
-//    private void checkPermission() {
-//        if (ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE)
-//                != PackageManager.PERMISSION_GRANTED) {
-//            // Permission is not granted, request it
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                    REQUEST_CODE_PERMISSION);
-//        }
-//    }
+    private void generatePDF() {
+        Bitmap bmp, scaledbmp;
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.certificate);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 4280, 3508, false);
 
-//    private boolean checkPermission() {
-//        if (SDK_INT >= Build.VERSION_CODES.R) {
-//            return Environment.isExternalStorageManager();
-//        } else {
-//            int result = ContextCompat.checkSelfPermission(QuizActivity.this, READ_EXTERNAL_STORAGE);
-//            int result1 = ContextCompat.checkSelfPermission(QuizActivity.this, WRITE_EXTERNAL_STORAGE);
-//            return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
-//        }
-//    }
+        PdfDocument pdfDocument = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(4280, 3508, 1).create();
+        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
 
-    private void createPDF(){
+        Paint paint = new Paint();
+        Canvas canvas = page.getCanvas();
+        canvas.drawBitmap(scaledbmp, 56, 40, paint);
 
-        PdfDocument myPdfDocument = new PdfDocument();
-        Paint myPaint = new Paint();
-        Paint namePaint = new Paint();
+        String stringPDF = fullname;
+        paint.setTextSize(250);
+        paint.setTypeface(Typeface.create(Typeface.DEFAULT_BOLD, Typeface.BOLD));
+        paint.setColor(Color.WHITE);
+        Rect bounds = new Rect();
+        paint.getTextBounds(stringPDF, 0, stringPDF.length(), bounds);
+        int x = (pageInfo.getPageWidth() - bounds.width()) / 2;
+        int y = 1700;
+        canvas.drawText(stringPDF, x, y, paint);
 
-        PdfDocument.PageInfo myPageInfo = new PdfDocument.PageInfo.Builder(1200, 2010, 1).create();
-        PdfDocument.Page myPage = myPdfDocument.startPage(myPageInfo);
-        Canvas canvas = myPage.getCanvas();
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+        String formattedDate = dateFormat.format(calendar.getTime());
+        paint.setTextSize(150);
+        paint.setColor(Color.WHITE);
+        int i = 700;
+        int j = 3000;
+        canvas.drawText(formattedDate, i, j, paint);
 
-        canvas.drawBitmap(scaledbmp, 0, 0, myPaint);
+        /*for (String line:stringPDF.split("\n")){
+            page.getCanvas().drawText(line,x,y, paint);
 
-        namePaint.setTextAlign(Paint.Align.CENTER);
-        namePaint.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-        namePaint.setTextSize(70);
-        canvas.drawText("John Doe,=", pageWidth/2, 270, namePaint);
-
-
-        myPdfDocument.finishPage(myPage);
-
-        File file = new File(Environment.getExternalStorageDirectory(),"/Certificate.pdf");
-
+            y+=paint.descent()-paint.ascent();
+        }*/
+        pdfDocument.finishPage(page);
         try {
-            myPdfDocument.writeTo(new FileOutputStream(file));
-        } catch (IOException e) {
-            e.printStackTrace();
+            pdfDocument.writeTo(new FileOutputStream(file));
         }
-        myPdfDocument.close();
+        catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Error in Creating", Toast.LENGTH_LONG).show();
+        }
+        pdfDocument.close();
     }
-
 }
